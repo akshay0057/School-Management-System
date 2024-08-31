@@ -1,0 +1,65 @@
+﻿<h3 class="heading mb-4">Student Management</h3>
+
+<div class="table-responsive">
+    <table class="table table-hover table-bordered text-center">
+        <thead class="table-header">
+            <tr>
+                <th scope="col">Roll No</th>
+                <th scope="col">Full Name</th>
+                <th scope="col">Class</th>
+                <th scope="col">Section</th>
+                <th scope="col">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var student in Students)
+            {
+                <tr>
+                    <td>@student.RollNo</td>
+                    <td>@student.FullName</td>
+                    <td>@student.Class</td>
+                    <td>@student.Section</td>
+                    <td>
+                        <button class="btn btn-sm btn-info" @onclick="() => EditStudent(student.StudentId)">
+                            <i class="fas fa-edit"></i> Edit
+                        </button>
+                        <button class="btn btn-sm btn-danger" @onclick="() => DeleteStudent(student.StudentId)">
+                            <i class="fas fa-trash"></i> Delete
+                        </button>
+                        <button class="btn btn-sm btn-secondary" @onclick="() => ViewDetails(student.StudentId)">
+                            <i class="fas fa-info-circle"></i> Details
+                        </button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+<!-- Modal -->
+<div class="modal fade @((isModalOpen ? "show d-block" : ""))" tabindex="-1" role="dialog" style="background-color: rgba(0,0,0,.5);">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Student Details</h5>
+                <button type="button" class="close" aria-label="Close" @onclick="CloseModal">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p><strong>Roll No:</strong> @selectedStudent?.RollNo</p>
+                <p><strong>Full Name:</strong> @selectedStudent?.FullName</p>
+                <p><strong>Class:</strong> @selectedStudent?.Class</p>
+                <p><strong>Section:</strong> @selectedStudent?.Section</p>
+                <!-- Add more details as needed -->
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" @onclick="CloseModal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>

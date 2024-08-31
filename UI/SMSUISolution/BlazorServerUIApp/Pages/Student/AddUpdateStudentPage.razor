@@ -1,0 +1,20 @@
+﻿@page "/add-student"
+@page "/edit-student/{studentId}"
+
+@if (studentId == null || studentId == 0)
+{
+    <PageTitle>Add Student - SMS</PageTitle>
+}
+else
+{
+    <PageTitle>Edit Student - SMS</PageTitle>
+}
+
+<BlazorServerUIApp.Components.Student.AddUpdateStudentComponent @StudentId="@studentId" />
+
+
+
+@code{
+    [Parameter]
+    public int? studentId { get; set; } 
+}

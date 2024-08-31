@@ -1,0 +1,107 @@
+﻿
+@if (StudentId == null || StudentId == 0)
+{
+    <h3 class="text-left mb-4">Add Student</h3>
+}
+else
+{
+    <h3 class="text-left mb-4">Update Student</h3>
+}
+
+<EditForm Model="request" OnValidSubmit="OnSubmit">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+
+    <div class="form-group">
+        <label for="FirstName">Roll No.</label>
+        <InputText id="RollNo" class="form-control" @bind-Value="request.RollNo" />
+        <ValidationMessage For="@(() => request.RollNo)" />
+    </div>
+
+    <div class="form-group">
+        <label for="FirstName">First Name <span style="color: red;">*</span></label>
+        <InputText id="FirstName" class="form-control" @bind-Value="request.FirstName" />
+        <ValidationMessage For="@(() => request.FirstName)" />
+    </div>
+
+    <div class="form-group">
+        <label for="LastName">Last Name</label>
+        <InputText id="LastName" class="form-control" @bind-Value="request.LastName" />
+        <ValidationMessage For="@(() => request.LastName)" />
+    </div>
+
+    <div class="form-group">
+        <label for="DateOfBirth">Date of Birth <span style="color: red;">*</span></label>
+        <InputDate id="DateOfBirth" class="form-control" @bind-Value="request.DateOfBirth" />
+        <ValidationMessage For="@(() => request.DateOfBirth)" />
+    </div>
+
+    <div class="form-group">
+        <label for="Gender">Gender <span style="color: red;">*</span></label>
+        <InputText id="Gender" class="form-control" @bind-Value="request.Gender" />
+        <ValidationMessage For="@(() => request.Gender)" />
+    </div>
+
+    <div class="form-group">
+        <label for="Email">Email</label>
+        <InputText id="Email" class="form-control" @bind-Value="request.Email" />
+        <ValidationMessage For="@(() => request.Email)" />
+    </div>
+
+    <div class="form-group">
+        <label for="PhoneNumber">Phone Number <span style="color: red;">*</span></label>
+        <InputText id="PhoneNumber" class="form-control" @bind-Value="request.PhoneNumber" />
+        <ValidationMessage For="@(() => request.PhoneNumber)" />
+    </div>
+
+    <div class="form-group">
+        <label for="Address">Address <span style="color: red;">*</span></label>
+        <InputTextArea id="Address" class="form-control" @bind-Value="request.Address" />
+        <ValidationMessage For="@(() => request.Address)" />
+    </div>
+
+    <div class="form-group">
+        <label for="EnrollmentDate">Enrollment Date <span style="color: red;">*</span></label>
+        <InputDate id="EnrollmentDate" class="form-control" @bind-Value="request.EnrollmentDate" />
+        <ValidationMessage For="@(() => request.EnrollmentDate)" />
+    </div>
+
+    <div class="form-group">
+        <label for="GradeLevel">Grade Level</label>
+        <InputNumber id="GradeLevel" class="form-control" @bind-Value="request.GradeLevel" />
+        <ValidationMessage For="@(() => request.GradeLevel)" />
+    </div>
+
+    <div class="form-group">
+        <label for="Class">Class <span style="color: red;">*</span></label>
+        <InputText id="Class" class="form-control" @bind-Value="request.Class" />
+        <ValidationMessage For="@(() => request.Class)" />
+    </div>
+
+    <div class="form-group">
+        <label for="Section">Section <span style="color: red;">*</span></label>
+        <InputText id="Section" class="form-control" @bind-Value="request.Section" />
+        <ValidationMessage For="@(() => request.Section)" />
+    </div>
+
+    <div class="form-group">
+        <label for="Photo">Photo</label>
+        <InputFile id="Photo" class="form-control" OnChange="@((e) => LoadPhoto(e))" />
+        <ValidationMessage For="@(() => request.Photo)" />
+    </div>
+
+    <div class="form-group">
+        <label for="Notes">Notes</label>
+        <InputTextArea id="Notes" class="form-control" @bind-Value="request.Notes" />
+        <ValidationMessage For="@(() => request.Notes)" />
+    </div>
+
+    @if (StudentId == null || StudentId == 0)
+    {
+        <button type="submit" class="btn btn-primary">Save</button>
+    }
+    else
+    {
+        <button type="submit" class="btn btn-primary">Update</button>
+    }
+</EditForm>
