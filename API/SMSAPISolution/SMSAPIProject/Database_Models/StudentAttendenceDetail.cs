@@ -1,0 +1,25 @@
+﻿using System;
+using System.Collections.Generic;
+
+namespace SMSAPIProject.Database_Models
+{
+    public partial class StudentAttendenceDetail
+    {
+        public int Id { get; set; }
+        public int StudentId { get; set; }
+        public DateTime AttendenceDate { get; set; }
+        public bool? IsPresent { get; set; }
+        public bool? IsAbsent { get; set; }
+        public bool? IsHalfDayPresent { get; set; }
+        public bool? IsLate { get; set; }
+        public bool? IsOnLeave { get; set; }
+        public string? Remarks { get; set; }
+        public string CreatedBy { get; set; } = null!;
+        public DateTime CreatedOn { get; set; }
+        public string? ModifiedBy { get; set; }
+        public DateTime? ModifiedOn { get; set; }
+        public string? Session { get; set; }
+
+        public virtual StudentDetail Student { get; set; } = null!;
+    }
+}

@@ -5,6 +5,11 @@ namespace SMSAPIProject.Database_Models
 {
     public partial class StudentDetail
     {
+        public StudentDetail()
+        {
+            StudentAttendenceDetails = new HashSet<StudentAttendenceDetail>();
+        }
+
         public int Id { get; set; }
         public string RollNo { get; set; } = null!;
         public string FirstName { get; set; } = null!;
@@ -24,5 +29,8 @@ namespace SMSAPIProject.Database_Models
         public DateTime CreatedOn { get; set; }
         public string? ModifiedBy { get; set; }
         public DateTime? ModifiedOn { get; set; }
+        public string? Session { get; set; }
+
+        public virtual ICollection<StudentAttendenceDetail> StudentAttendenceDetails { get; set; }
     }
 }

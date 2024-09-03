@@ -16,6 +16,9 @@ builder.Services.AddDbContext<SMS_Dev_DbContext>(options =>
 
 builder.Services.AddTransient<IAuthService, AuthService>();
 builder.Services.AddTransient<IStudentService, StudentService>();
+builder.Services.AddTransient<IMasterService, MasterService>();
+builder.Services.AddTransient<ITeacherService, TeacherService>();
+builder.Services.AddTransient<IAttendenceService, AttendenceService>();
 
 
 

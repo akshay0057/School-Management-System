@@ -9,6 +9,6 @@ namespace SMSAPIProject.Services.IServices
         public Task<CommonRes> AddUpdateStudent(AddUpdateStudentReq request, string loginUserId);
         public Task<CommonRes> DeleteStudentById(int id);
         public Task<StudentDetailsByIdRes> GetStudentDetailsById(int id);
-        public Task<StudentListRes> GetstudentList(StudentListReq request);
+        public Task<StudentListRes> GetStudentList(StudentListReq request);
     }
 }

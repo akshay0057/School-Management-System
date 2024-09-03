@@ -194,7 +194,7 @@ namespace SMSAPIProject.Services
             }
         }
 
-        public async Task<StudentListRes> GetstudentList(StudentListReq request)
+        public async Task<StudentListRes> GetStudentList(StudentListReq request)
         {
             try
             {

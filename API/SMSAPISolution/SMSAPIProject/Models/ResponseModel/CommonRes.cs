@@ -12,4 +12,10 @@
         public string StatusCode { get; set; } = string.Empty;
         public string ErrorDescryption { get; set; } = string.Empty;
     }
+
+    public class DropdownResponseData
+    {
+        public string Text { get; set; } = string.Empty;
+        public string Value { get; set; } = string.Empty;
+    }
 }

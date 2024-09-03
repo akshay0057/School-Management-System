@@ -18,6 +18,11 @@ namespace SMSAPIProject.Controllers
         [HttpPost("login")]
         public async Task<IActionResult> UserLogin([FromBody] LoginReq loginReq)
         {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
             var response = await _authService.UserLogin(loginReq);
             return Ok(response);
         }
