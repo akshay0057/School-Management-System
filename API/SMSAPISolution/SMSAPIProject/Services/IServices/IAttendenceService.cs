@@ -9,6 +9,8 @@ namespace SMSAPIProject.Services.IServices
         public Task<CommonRes> SaveStudentsAttendence(SaveStudentAttendenceReq request, string loginUserId);
         public Task<StudentListForAttendenceRes> GetStudentsAttendenceList(StudentListForAttendenceReq request);
         public Task<CommonRes> SaveTeachersAttendence(SaveTeacherAttendenceReq request, string loginUserId);
-        public Task<TeacherListForAttendenceRes> GetTeachersAttendenceList();
+        public Task<TeacherListForAttendenceRes> GetTeachersAttendenceList(TeacherListForAttendenceReq request);
+        public Task<ParticularStudentAttendenceListRes> GetStudentsAttendenceListById(ParticularStudentAttendenceDetailsReq request);
+        public Task<ParticularTeacherAttendenceListRes> GetTeachersAttendenceListById(ParticularTeacherAttendenceDetailsReq request);
     }
 }

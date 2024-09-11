@@ -6,12 +6,10 @@ namespace BlazorServerUIApp.Components.Student
     {
         private List<StudentListingResp> Students = new List<StudentListingResp>
         {
-            new StudentListingResp { StudentId = 1, RollNo = "A001", FullName = "John Doe", Class = "10", Section = "A" },
-            new StudentListingResp { StudentId = 2, RollNo = "A002", FullName = "Jane Smith", Class = "10", Section = "B" },
+            //new StudentListingResp { StudentId = 1, RollNo = "A001", FullName = "John Doe", Class = "10", Section = "A" },
+            //new StudentListingResp { StudentId = 2, RollNo = "A002", FullName = "Jane Smith", Class = "10", Section = "B" },
         };
-
-        private StudentListingResp? selectedStudent;
-        private bool isModalOpen = false;
+        private string searchText = string.Empty;
 
 
         protected override Task OnInitializedAsync()
@@ -29,16 +27,9 @@ namespace BlazorServerUIApp.Components.Student
             // Logic to delete student
         }
 
-        private void ViewDetails(int studentId)
+        private void OnClick_Add()
         {
-            selectedStudent = Students.Where(x => x.StudentId == studentId).FirstOrDefault();
-            isModalOpen = true;
-            // Logic to view student details
-        }
-
-        private void CloseModal()
-        {
-            isModalOpen = false;
+            _navigationManager.NavigateTo("add-student");
         }
     }
 }

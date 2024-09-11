@@ -1,12 +1,18 @@
-﻿namespace SMSAPIProject.Models.RequestModel.Attendence
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace SMSAPIProject.Models.RequestModel.Attendence
 {
     public class SaveTeacherAttendenceReq
     {
+        [Required]
+        [RequestTypeValidation]
+        public string RequestType { get; set; } = string.Empty;
         public List<TeacherAttendenceRequestData>? AttendenceRequest { get; set; }
     }
 
     public class TeacherAttendenceRequestData
     {
+        public int? Id { get; set; }
         public int TeacherId { get; set; }
         public DateTime AttendenceDate { get; set; }
         public TimeSpan? InTime { get; set; }

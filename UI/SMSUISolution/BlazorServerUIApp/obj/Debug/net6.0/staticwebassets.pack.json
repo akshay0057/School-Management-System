@@ -57,6 +57,18 @@
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
+      "Id": "D:\\Akshay\\School Management System\\School-Management-System\\UI\\SMSUISolution\\BlazorServerUIApp\\wwwroot\\images\\Book.gif",
+      "PackagePath": "staticwebassets\\images\\Book.gif"
+    },
+    {
+      "Id": "D:\\Akshay\\School Management System\\School-Management-System\\UI\\SMSUISolution\\BlazorServerUIApp\\wwwroot\\images\\background.jpg",
+      "PackagePath": "staticwebassets\\images\\background.jpg"
+    },
+    {
+      "Id": "D:\\Akshay\\School Management System\\School-Management-System\\UI\\SMSUISolution\\BlazorServerUIApp\\wwwroot\\js\\localStorage.js",
+      "PackagePath": "staticwebassets\\js\\localStorage.js"
+    },
+    {
       "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.BlazorServerUIApp.Microsoft.AspNetCore.StaticWebAssets.props",
       "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
     },

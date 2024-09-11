@@ -1,0 +1,12 @@
+﻿@using BlazorServerUIApp.Redux.States.Common;
+@using Fluxor;
+
+@inject IState<LoadingState> _loadingState
+
+@if (_loadingState.Value.IsLoading)
+{
+    <div>
+        <img src="~/images/book.gif" />
+    </div>
+}
+

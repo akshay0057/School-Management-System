@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.CodeAnalysis;
+using Microsoft.EntityFrameworkCore;
 using SMSAPIProject.Database_Models;
 using SMSAPIProject.Models.Enum;
 using SMSAPIProject.Models.RequestModel.Attendence;
@@ -93,29 +94,144 @@ namespace SMSAPIProject.Services
             }
         }
 
-        public async Task<TeacherListForAttendenceRes> GetTeachersAttendenceList()
+        public async Task<ParticularStudentAttendenceListRes> GetStudentsAttendenceListById(ParticularStudentAttendenceDetailsReq request)
         {
             try
             {
-                var response = new TeacherListForAttendenceRes();
+                var response = new ParticularStudentAttendenceListRes();
 
-                var teachers = await _context.TeacherDetails
-                    .Select(x => new TeacherListForAttendenceData()
+                var data = await _context.StudentAttendenceDetails
+                    .Where(x => x.StudentId == request.StudentId && x.Session == request.Session && x.AttendenceDate.Month.ToString() == request.Month)
+                    .Select(z => new ParticularStudentAttendenceListData()
                     {
-                        TeacherId = x.Id,
-                        TeacherName = (x.FirstName + " " + (x.LastName ?? "")).Trim()
-                    }).OrderBy(y => y.TeacherName)
+                        Date = z.AttendenceDate,
+                        Status = z.IsPresent == true ? "Present"
+                        : (z.IsAbsent == true ? "Absent"
+                        : (z.IsHalfDayPresent == true ? "Half-day Present"
+                        : (z.IsLate == true ? "Late"
+                        : (z.IsOnLeave == true ? "On Leave" : string.Empty)))),
+                        Remarks = z.Remarks ?? "",
+                    }).OrderBy(y => y.Date)
                     .ToListAsync();
 
                 response.Status = true;
                 response.Message = "Success";
-                response.TotalRecord = teachers.Count();
-                response.TeacherListForAttendence = teachers;
+                response.ToTalRecords = data.Count();
+                response.Data = data;
+                return response;
+            }
+            catch (Exception ex)
+            {
+                return new ParticularStudentAttendenceListRes()
+                {
+                    Status = false,
+                    Message = "Error",
+                    Error = new ErrorModel()
+                    {
+                        StatusCode = "400",
+                        ErrorDescryption = ex.Message
+                    }
+                };
+            }
+        }
+
+        public async Task<TeacherListForAttendenceRes> GetTeachersAttendenceList(TeacherListForAttendenceReq request)
+        {
+            try
+            {
+                var response = new TeacherListForAttendenceRes();
+                var teacherList = new List<TeacherListForAttendenceData>();
+
+                var attendenceDetails = await _context.TeacherAttendenceDetails.Where(x => x.AttendenceDate.Date == request.AttendenceDate.Date && x.AttendenceDate.Month == request.AttendenceDate.Month && x.AttendenceDate.Year == request.AttendenceDate.Year).ToListAsync();
+                if (!attendenceDetails.Any())
+                {
+                    var teachers = await _context.TeacherDetails.Where(x => x.IsActive == true).ToListAsync();
+
+                    teacherList = teachers.OrderBy(x => (x.FirstName + " " + (x.LastName??"")).Trim())
+                        .Select(y => new TeacherListForAttendenceData()
+                        {
+                            TeacherId = y.Id,
+                            TeacherName = (y.FirstName + " " + (y.LastName ?? "")).Trim(),
+                            IsPresent = false,
+                            IsAbsent = false,
+                            IsHalfDayPresent = false,
+                            IsLate = false,
+                            IsOnLeave = false,
+                            Remarks = ""
+                        }).ToList();
+                }
+                else
+                {
+                    teacherList = (from ad in attendenceDetails
+                                   join td in _context.TeacherDetails on ad.TeacherId equals td.Id
+                                   orderby (td.FirstName + " " + (td.LastName??"")).Trim()
+                                   select new TeacherListForAttendenceData()
+                                   {
+                                       TeacherId = ad.Id,
+                                       TeacherName = (td.FirstName + " " + (td.LastName ?? "")).Trim(),
+                                       InTime = ad.InTime,
+                                       OutTime = ad.OutTime,
+                                       IsPresent = ad.IsPresent ?? false,
+                                       IsAbsent = ad.IsAbsent ?? false,
+                                       IsHalfDayPresent = ad.IsHalfDayPresent ?? false,
+                                       IsLate = ad.IsLate ?? false,
+                                       IsOnLeave = ad.IsOnLeave ?? false,
+                                       Remarks = ad.Remarks
+                                   }).ToList();
+                }
+
+                response.Status = true;
+                response.Message = "Success";
+                response.TotalRecord = teacherList.Count();
+                response.TeacherListForAttendence = teacherList;
                 return response;
             }
             catch (Exception ex)
             {
                 return new TeacherListForAttendenceRes()
+                {
+                    Status = false,
+                    Message = "Error",
+                    Error = new ErrorModel()
+                    {
+                        StatusCode = "400",
+                        ErrorDescryption = ex.Message
+                    }
+                };
+            }
+        }
+
+        public async Task<ParticularTeacherAttendenceListRes> GetTeachersAttendenceListById(ParticularTeacherAttendenceDetailsReq request)
+        {
+            try
+            {
+                var response = new ParticularTeacherAttendenceListRes();
+
+                var data = await _context.TeacherAttendenceDetails
+                    .Where(x => x.TeacherId == request.TeacherId && x.AttendenceDate.Month.ToString() == request.Month)
+                    .Select(z => new ParticularTeacherAttendenceListData()
+                    {
+                        Date = z.AttendenceDate,
+                        Status = z.IsPresent == true ? "Present" 
+                        : (z.IsAbsent == true ? "Absent" 
+                        : (z.IsHalfDayPresent == true ? "Half-day Present" 
+                        : (z.IsLate == true ? "Late" 
+                        : (z.IsOnLeave == true ? "On Leave" : string.Empty)))),
+                        InTime = z.InTime,
+                        OutTime = z.OutTime,
+                        Remarks = z.Remarks??""
+                    }).OrderBy(y => y.Date)
+                    .ToListAsync();
+
+                response.Status = true;
+                response.Message = "Success";
+                response.ToTalRecords = data.Count();
+                response.Data = data;
+                return response;
+            }
+            catch (Exception ex)
+            {
+                return new ParticularTeacherAttendenceListRes()
                 {
                     Status = false,
                     Message = "Error",
@@ -211,7 +327,70 @@ namespace SMSAPIProject.Services
         {
             try
             {
-                return new CommonRes();
+                var response = new CommonRes();
+
+                if(request.AttendenceRequest != null && request.AttendenceRequest.Count() > 0)
+                {
+                    // SAVE
+                    if (request.RequestType == SaveUpdateRequestType.Save.ToString())
+                    {
+                        var data = new List<TeacherAttendenceDetail>();
+                        foreach (var item in request.AttendenceRequest)
+                        {
+                            data.Add(new TeacherAttendenceDetail()
+                            {
+                                TeacherId = item.TeacherId,
+                                AttendenceDate = item.AttendenceDate,
+                                InTime = item.InTime,
+                                OutTime = item.OutTime,
+                                IsPresent = item.IsPresent,
+                                IsAbsent = item.IsAbsent,
+                                IsHalfDayPresent = item.IsHalfDayPresent,
+                                IsLate = item.IsLate,
+                                IsOnLeave = item.IsOnLeave,
+                                Remarks = item.Remarks,
+                                CreatedBy = loginUserId,
+                                CreatedOn = DateTime.Now
+                            });
+                        }
+
+                        await _context.TeacherAttendenceDetails.AddRangeAsync(data);
+                        await _context.SaveChangesAsync();
+
+                        response.Status = true;
+                        response.Message = "Attendence data save successfully";
+                        return response;
+                    }
+
+                    // UPDATE
+                    var attendenceDetails = await _context.TeacherAttendenceDetails.ToListAsync();
+                    foreach (var item in request.AttendenceRequest)
+                    {
+                        var attendence = attendenceDetails.Find(x => x.Id == item.Id);
+                        if (attendence != null)
+                        {
+                            attendence.InTime = item.InTime;
+                            attendence.OutTime = item.OutTime;
+                            attendence.IsPresent = item.IsPresent;
+                            attendence.IsAbsent = item.IsAbsent;
+                            attendence.IsHalfDayPresent = item.IsHalfDayPresent;
+                            attendence.IsLate = item.IsLate;
+                            attendence.IsOnLeave = item.IsOnLeave;
+                            attendence.Remarks = item.Remarks;
+                            attendence.ModifiedBy = loginUserId;
+                            attendence.ModifiedOn = DateTime.Now;
+                        }
+                    }
+                    await _context.SaveChangesAsync();
+
+                    response.Status = true;
+                    response.Message = "Attendence data updated successfully";
+                    return response;
+                }
+
+                response.Status = false;
+                response.Message = "Invalid request";
+                return response;
             }
             catch (Exception ex)
             {

@@ -1,0 +1,13 @@
+﻿@page "/"
+@inject NavigationManager _navigationManager
+
+@code{
+    protected override Task OnInitializedAsync()
+    {
+        // var returnUrl = "/" + _navigationManager?.ToBaseRelativePath(_navigationManager.Uri);
+        // _navigationManager?.NavigateTo($"/?returnurl={returnUrl}", false);
+        // return Task.CompletedTask;
+        _navigationManager.NavigateTo("/abc", true); // 'true' forces a full reload
+        return Task.CompletedTask;
+    }
+}

@@ -7,11 +7,9 @@
 
     public class MasterData
     {
-        public List<DropdownResponseData>? Classes { get; set; } 
-        public List<DropdownResponseData>? Sections { get; set; } 
-        public List<DropdownResponseData>? Roles { get; set; } 
-        public List<DropdownResponseData>? Salutations { get; set; } 
-    }
-
-     
+        public List<DropdownResponseData>? Classes { get; set; }
+        public List<DropdownResponseData>? Sections { get; set; }
+        public List<DropdownResponseData>? Roles { get; set; }
+        public List<DropdownResponseData>? Salutations { get; set; }
+    } 
 }

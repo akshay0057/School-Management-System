@@ -1,9 +1,7 @@
 ﻿namespace SMSAPIProject.Models.ResponseModel.Auth
 {
-    public class LoginRes
+    public class LoginRes : CommonRes
     {
-        public bool Status { get; set; }
-        public string Message { get; set; } = string.Empty;
         public LoginResponseData? Data { get; set; }
     }
 

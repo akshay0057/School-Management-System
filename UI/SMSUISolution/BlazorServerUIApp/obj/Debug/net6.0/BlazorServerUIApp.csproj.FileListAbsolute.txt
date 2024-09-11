@@ -64,3 +64,16 @@ D:\Akshay\School Management System\School-Management-System\UI\SMSUISolution\Bla
 D:\Akshay\School Management System\School-Management-System\UI\SMSUISolution\BlazorServerUIApp\obj\Debug\net6.0\BlazorServerUIApp.pdb
 D:\Akshay\School Management System\School-Management-System\UI\SMSUISolution\BlazorServerUIApp\obj\Debug\net6.0\BlazorServerUIApp.genruntimeconfig.cache
 D:\Akshay\School Management System\School-Management-System\UI\SMSUISolution\BlazorServerUIApp\obj\Debug\net6.0\ref\BlazorServerUIApp.dll
+D:\Akshay\School Management System\School-Management-System\UI\SMSUISolution\BlazorServerUIApp\bin\Debug\net6.0\BlazorBootstrap.dll
+D:\Akshay\School Management System\School-Management-System\UI\SMSUISolution\BlazorServerUIApp\bin\Debug\net6.0\Fluxor.dll
+D:\Akshay\School Management System\School-Management-System\UI\SMSUISolution\BlazorServerUIApp\bin\Debug\net6.0\Fluxor.Blazor.Web.dll
+D:\Akshay\School Management System\School-Management-System\UI\SMSUISolution\BlazorServerUIApp\bin\Debug\net6.0\Fluxor.Blazor.Web.ReduxDevTools.dll
+D:\Akshay\School Management System\School-Management-System\UI\SMSUISolution\BlazorServerUIApp\bin\Debug\net6.0\MatBlazor.dll
+D:\Akshay\School Management System\School-Management-System\UI\SMSUISolution\BlazorServerUIApp\bin\Debug\net6.0\Microsoft.AspNetCore.Authorization.dll
+D:\Akshay\School Management System\School-Management-System\UI\SMSUISolution\BlazorServerUIApp\bin\Debug\net6.0\Microsoft.AspNetCore.Components.dll
+D:\Akshay\School Management System\School-Management-System\UI\SMSUISolution\BlazorServerUIApp\bin\Debug\net6.0\Microsoft.AspNetCore.Components.Forms.dll
+D:\Akshay\School Management System\School-Management-System\UI\SMSUISolution\BlazorServerUIApp\bin\Debug\net6.0\Microsoft.AspNetCore.Components.Web.dll
+D:\Akshay\School Management System\School-Management-System\UI\SMSUISolution\BlazorServerUIApp\bin\Debug\net6.0\Microsoft.AspNetCore.Metadata.dll
+D:\Akshay\School Management System\School-Management-System\UI\SMSUISolution\BlazorServerUIApp\bin\Debug\net6.0\Microsoft.Extensions.Logging.Abstractions.dll
+D:\Akshay\School Management System\School-Management-System\UI\SMSUISolution\BlazorServerUIApp\bin\Debug\net6.0\Microsoft.JSInterop.dll
+D:\Akshay\School Management System\School-Management-System\UI\SMSUISolution\BlazorServerUIApp\bin\Debug\net6.0\System.IO.Pipelines.dll

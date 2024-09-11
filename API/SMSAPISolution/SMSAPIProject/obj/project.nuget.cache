@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "BSkfiLb+TApBPlrXrJmaEOjYSUQVhsFSsP3qRXsciK1KvLMknV82LyITgr1WPA0yULxIb4FpE7TbK56TN7mrNQ==",
+  "dgSpecHash": "DjEmuzNqzh0guYdbf+I5ePOUqdscBcPdPNSSZo/gX7IxahGzKfoJ3U4YzLDFUfu7HJS/4BbT001b5C9W1k073A==",
   "success": true,
   "projectFilePath": "D:\\Akshay\\School Management System\\School-Management-System\\API\\SMSAPISolution\\SMSAPIProject\\SMSAPIProject.csproj",
   "expectedPackageFiles": [
@@ -58,6 +58,8 @@
     "C:\\Users\\akshay\\.nuget\\packages\\messagepack.annotations\\2.1.152\\messagepack.annotations.2.1.152.nupkg.sha512",
     "C:\\Users\\akshay\\.nuget\\packages\\messagepackanalyzer\\2.1.152\\messagepackanalyzer.2.1.152.nupkg.sha512",
     "C:\\Users\\akshay\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\6.0.3\\microsoft.aspnetcore.authentication.jwtbearer.6.0.3.nupkg.sha512",
+    "C:\\Users\\akshay\\.nuget\\packages\\microsoft.aspnetcore.http.abstractions\\2.2.0\\microsoft.aspnetcore.http.abstractions.2.2.0.nupkg.sha512",
+    "C:\\Users\\akshay\\.nuget\\packages\\microsoft.aspnetcore.http.features\\2.2.0\\microsoft.aspnetcore.http.features.2.2.0.nupkg.sha512",
     "C:\\Users\\akshay\\.nuget\\packages\\microsoft.aspnetcore.razor.language\\6.0.0\\microsoft.aspnetcore.razor.language.6.0.0.nupkg.sha512",
     "C:\\Users\\akshay\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\5.0.0\\microsoft.bcl.asyncinterfaces.5.0.0.nupkg.sha512",
     "C:\\Users\\akshay\\.nuget\\packages\\microsoft.codeanalysis.analyzers\\3.3.2\\microsoft.codeanalysis.analyzers.3.3.2.nupkg.sha512",

@@ -72,3 +72,16 @@ a, .btn-link {
 .table-header {
     background-color: #c7c3c3;
 }
+
+
+.login-container {
+    background-color: #f8f9fa;
+}
+
+.login-card {
+    width: 100%;
+    max-width: 400px;
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}

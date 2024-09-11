@@ -1,8 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using SMSAPIProject.Database_Models;
 using SMSAPIProject.Helper;
 using SMSAPIProject.Models.RequestModel.Attendence;
-using SMSAPIProject.Models.RequestModel.Student;
 using SMSAPIProject.Services.IServices;
 
 namespace SMSAPIProject.Controllers
@@ -56,9 +54,38 @@ namespace SMSAPIProject.Controllers
         }
 
         [HttpGet("teacherattendencelist")]
-        public async Task<IActionResult> GetTeachersAttendenceList()
+        public async Task<IActionResult> GetTeachersAttendenceList([FromQuery] TeacherListForAttendenceReq request)
         {
-            var response = await _service.GetTeachersAttendenceList();
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            var response = await _service.GetTeachersAttendenceList(request);
+            return Ok(response);
+        }
+
+        [HttpGet("studentattendencelistbyid")]
+        public async Task<IActionResult> GetStudentsAttendenceListById([FromQuery] ParticularStudentAttendenceDetailsReq request)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            var response = await _service.GetStudentsAttendenceListById(request);
+            return Ok(response);
+        }
+
+        [HttpGet("teacherattendencelistbyid")]
+        public async Task<IActionResult> GetTeachersAttendenceListById([FromQuery] ParticularTeacherAttendenceDetailsReq request)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            var response = await _service.GetTeachersAttendenceListById(request);
             return Ok(response);
         }
     }

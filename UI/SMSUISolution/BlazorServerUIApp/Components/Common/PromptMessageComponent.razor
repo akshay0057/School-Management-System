@@ -1,0 +1,45 @@
+﻿@using BlazorServerUIApp.Redux.Actions.Common;
+@using BlazorServerUIApp.Redux.States.Common;
+@using Fluxor;
+
+@inject IState<PromptMessageState> _message
+@inject IDispatcher _dispatcher
+
+@if(_message.Value.IsSuccess || _message.Value.IsSuccess)
+{
+    <span style="display:none">
+        @TestTime
+    </span>
+
+    <div class="toast-msg">@_message.Value.Message</div>
+}
+
+
+@code{
+    protected override async Task OnInitializedAsync()
+    {
+        await base.OnInitializedAsync();
+    }
+
+    public void CloseAlertDialog()
+    {
+        _dispatcher.Dispatch(new PromptMessageAction());
+    }
+
+    private async Task TestTime()
+    {
+        TimeSpan timeLeft = new TimeSpan(0, 0, 5);
+        while (timeLeft > new TimeSpan())
+        {
+            await Task.Delay(1000);
+            timeLeft = timeLeft.Subtract(new TimeSpan(0, 0, 1));
+        }
+        await AfterTime();
+    }
+
+    Task AfterTime()
+    {
+        _dispatcher.Dispatch(new PromptMessageAction(false, false, string.Empty));
+        return Task.CompletedTask;
+    }
+}

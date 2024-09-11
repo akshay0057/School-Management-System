@@ -1,0 +1,45 @@
+﻿@page "/"
+@layout EmptyLayout
+
+@using BlazorServerUIApp.Redux.States.Auth;
+@using BlazorServerUIApp.Services.IServices;
+@using Fluxor;
+
+@inject IState<LoginRequestState> _loginRequestState
+@inject IDispatcher _dispatcher
+@inject NavigationManager _navigationManager
+@inject ILocalStorageService _localStorage
+@inject IAuthService _service
+
+<PageTitle>Login - SMS</PageTitle>
+
+<div class="login-container d-flex justify-content-center align-items-center min-vh-100">
+    <div class="card login-card">
+        <div class="card-body">
+            <div class="card-title text-center">
+                <h3 style="color: green; font-weight: bold;">LOGIN</h3>
+            </div>
+
+            <EditForm Model="@request" OnValidSubmit="OnClick_Login" class="login-form">
+                <DataAnnotationsValidator />
+                @* <ValidationSummary /> *@
+
+                <div class="form-floating mb-3">
+                    <InputText type="email" class="form-control" id="floatingInput" placeholder="name@example.com" @bind-Value="request.Email" />
+                    <label for="floatingInput">Email <span style="color: red;">*</span></label>
+                    <ValidationMessage For="@(() => request.Email)" />
+                </div>
+
+                <div class="form-floating">
+                    <InputText type="password" class="form-control" id="floatingPassword" placeholder="Password" @bind-Value="request.Password" />
+                    <label for="floatingPassword">Password <span style="color: red;">*</span></label>
+                    <ValidationMessage For="@(() => request.Password)" />
+                </div>
+
+                <div class="d-grid gap-2" style="margin-top: 12px;">
+                    <button type="submit" class="btn btn-primary btn-block">Login</button>
+                </div>
+            </EditForm>
+        </div>
+    </div>
+</div>

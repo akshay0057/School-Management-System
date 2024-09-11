@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using Middlewares;
 using SMSAPIProject.Database_Models;
 using SMSAPIProject.Services;
 using SMSAPIProject.Services.IServices;
@@ -40,6 +41,10 @@ app.UseHttpsRedirection();
 
 app.UseAuthentication();
 app.UseAuthorization();
+
+// Add Middleware Type to Application's Request pipeline
+//app.UseMiddleware<TokenValidationMiddleware>();
+//app.UseMiddleware<CustomHeaderMiddleware>();
 
 app.MapControllers();
 

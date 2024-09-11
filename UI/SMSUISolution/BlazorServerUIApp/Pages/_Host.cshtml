@@ -1,8 +1,9 @@
 ﻿@page "/"
 @namespace BlazorServerUIApp.Pages
+@using BlazorServerUIApp.Pages.Auth;
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 @{
     Layout = "_Layout";
 }
 
-<component type="typeof(App)" render-mode="ServerPrerendered" />
+<component type="typeof(LoginPage)" render-mode="ServerPrerendered" />

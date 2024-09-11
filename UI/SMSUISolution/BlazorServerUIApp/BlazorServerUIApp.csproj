@@ -8,13 +8,15 @@
 
   <ItemGroup>
     <Folder Include="Components\Teacher\" />
-    <Folder Include="Models\Enum\" />
     <Folder Include="Pages\Teacher\" />
-    <Folder Include="Services\IServices\IStudent\" />
-    <Folder Include="Services\Student\" />
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Blazor.Bootstrap" Version="3.0.0" />
+    <PackageReference Include="Fluxor" Version="6.0.0" />
+    <PackageReference Include="Fluxor.Blazor.Web" Version="6.0.0" />
+    <PackageReference Include="Fluxor.Blazor.Web.ReduxDevTools" Version="6.0.0" />
+    <PackageReference Include="MatBlazor" Version="2.10.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.10" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.10" />
   </ItemGroup>
